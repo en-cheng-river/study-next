@@ -2,16 +2,23 @@
 
 import { useEffect, useState } from 'react';
 
+interface PostType {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+}
+
 export default function Posts() {
-  const [posts, setPosts] = useState<any[]>();
+  const [posts, setPosts] = useState<PostType[]>();
   const [num, setNum] = useState(0);
 
   useEffect(() => {
     async function fetchPosts() {
-      let res = await fetch('https://jsonplaceholder.typicode.com/posts', {
+      const res = await fetch('https://jsonplaceholder.typicode.com/posts', {
         cache: 'force-cache',
       });
-      let data = await res.json();
+      const data = await res.json();
       setPosts(data);
     }
     fetchPosts();
@@ -31,7 +38,7 @@ export default function Posts() {
       </button>
       <ul>
         {Array.isArray(posts) &&
-          posts?.map((post: any) => <li key={post.id}>{post.title}</li>)}
+          posts?.map(post => <li key={post.id}>{post.title}</li>)}
       </ul>
     </div>
   );

@@ -2,8 +2,8 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
-// @ts-ignore
 const _photos = [
   { id: '1', src: 'http://placebear.com/200/200' },
   { id: '2', src: 'http://placebear.com/200/200' },
@@ -17,7 +17,7 @@ const Page = () => {
       {_photos.map(({ id, src }) => (
         <div key={id}>
           <Link href={`/feed/photo/${id}`}>
-            <img width="100" src={src} alt={''} />
+            <Image width="100" height={100} src={src} alt={''} />
           </Link>
         </div>
       ))}
