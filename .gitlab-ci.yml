@@ -1,0 +1,26 @@
+include:
+    - 'https://git.nosugar.io/cicd/ci-job-template/-/raw/master/jobs/build-kaniko.yml'
+    - 'https://git.nosugar.io/cicd/ci-job-template/-/raw/master/jobs/deploy-kustomize.yml'
+variables:
+    CI_PROJECT_NAME: "annual-summary-report-frontend"
+    DEPLOY_REPO: "git@git.nosugar.io:nosugar_browser_project/nosugar_simple_applications/annual_summary_report/2024/gitops.git"
+    DEPLOY_DIR: "deployment-frontend/dev"
+    DEPLOY_DIR_UAT: "deployment-frontend/sim"
+    DEPLOY_DIR_PRO: "deployment-frontend/pro"
+    CI_REGISTRY: "harbor.nosugar.io"
+    ENABLE_BUILD: "ON"
+    ENABLE_DEPLOY: "ON"
+    ENABLE_BUILD_PRO: "OFF"
+    ENABLE_DEPLOY_UAT: "OFF"
+    ENABLE_DEPLOY_PRO: "OFF"
+
+stages:
+    - build
+    - deploy
+
+build:
+    extends: .build
+
+deploy:
+    extends: .deploy
+    needs: ["build"]

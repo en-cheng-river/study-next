@@ -1,0 +1,14 @@
+
+.shareItem {
+  height: 8em;
+}
+.shareItem button{
+  width: 10em;
+  height: 5em;
+  background: #f60;
+}
+.shareItem:last-child button {
+  width: 10em;
+  height: 5em;
+  background: #00ff0040;
+}
