@@ -2,8 +2,6 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   /* config options here */
-  distDir: 'dist',
-  reactStrictMode: false,
   /* 重定向
    *  redirects in next.config.js
    * */
