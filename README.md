@@ -34,3 +34,20 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+## 分享功能
+```js
+    import html2canvas from 'html2canvas';
+    // ...
+    const element = document.body; // 要截图的元素
+    const canvas = await html2canvas(element);
+    const imgData = canvas.toDataURL('image/png');
+    if (window?.flutter_inappwebview) {
+        window.flutter_inappwebview.callHandler('share', {
+            title: '测试分享',
+            description: '测试分享描述',
+            data: imgData,
+        });
+    }
+```
